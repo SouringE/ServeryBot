@@ -27,6 +27,19 @@ async def menu(ctx: commands.Context, servery: str):
 
 	#getting the proper key
 	str_key = servery + " Servery"
+
+	#adding case for all serveries
+	if servery == "all":
+		str_output = ""
+		for key in serv_dict.keys():
+			if key == "Baker":
+				str_output += "Baker College Kitchen \n"
+			else:
+				str_output += str(key) + " Servery \n"
+			for item in serv_dict[key]:
+				str_output += "- " + item + "\n"
+
+	#case for Baker
 	if servery == "Baker":
 		str_key = "Baker College Kitchen"
 	
