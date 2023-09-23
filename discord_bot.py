@@ -25,27 +25,29 @@ async def menu(ctx: commands.Context, servery: str):
 	serv_dict = get_menu()
 	str_output = ""
 
-	#getting the proper key
-	str_key = servery + " Servery"
-
 	#adding case for all serveries
 	if servery == "all":
 		str_output = ""
 		for key in serv_dict.keys():
+			str_output += " \n"
 			if key == "Baker":
-				str_output += "Baker College Kitchen \n"
+				str_output += "***Baker College Kitchen*** \n"
 			else:
-				str_output += str(key) + " Servery \n"
+				str_output += "***" + str(key) + "***" + " \n"
 			for item in serv_dict[key]:
 				str_output += "- " + item + "\n"
 
 	#case for Baker
-	if servery == "Baker":
+	elif servery == "Baker":
 		str_key = "Baker College Kitchen"
+		for item in serv_dict[str_key]:
+			str_output += "- " + item + "\n"
 	
-	#creating the message
-	for item in serv_dict[str_key]:
-		str_output += "- " + item + "\n"
+	#all other cases
+	else:
+		str_key = servery + " Servery"
+		for item in serv_dict[str_key]:
+			str_output += "- " + item + "\n"
 
 	#sending the message
 	#await ctx.send(servery + " is having the following for " + meal_name)
