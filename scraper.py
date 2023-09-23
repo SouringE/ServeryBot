@@ -16,13 +16,13 @@ def get_menu():
     weekday = today.weekday()
     week_number = weekday + 1
     #print(week_number)
-    day_id = "block-views-block-day-menu-block-" + "2" # str(week_number)
+    day_id = "block-views-block-day-menu-block-" + str(week_number) #archive uses 2 instead of str(week_number)
 
     # Today's Rice dining website
-    # url = 'https://dining.rice.edu/'
+    url = 'https://dining.rice.edu/'
 
     # Found this on internet archive for more test cases :D
-    url = "https://web.archive.org/web/20230829132709/https://dining.rice.edu/"
+    #url = "https://web.archive.org/web/20230829132709/https://dining.rice.edu/"
 
     menu = requests.get(url)
     soup = BeautifulSoup(menu.text, 'html.parser')
@@ -31,8 +31,8 @@ def get_menu():
     today_menu = soup.find(id=day_id)
 
     # This finds whether it's lunch or dinner. (Have to test whether it works for dinner during dinner lol)
-    meal = today_menu.find("h2")
-    meal_name = item_text(str(meal))
+    # meal = today_menu.find("h2")
+    # meal_name = item_text(str(meal))
 
     # Dictionary mapping servery names to a list of the menu items in that servery
     serv_dict = {"Seibel Servery" : [], "South Servery" : [], "West Servery" : [], "North Servery" : [], "Baker College Kitchen" : []}
@@ -67,5 +67,6 @@ for item in serv_dict["Seibel Servery"]:
 print()
 
 print("Baker:")
-for item in serv_dict["North Servery"]:
+for item in serv_dict["Baker College Kitchen"]:
     print("- " + item)
+print(len(serv_dict["Baker College Kitchen"]))

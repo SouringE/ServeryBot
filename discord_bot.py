@@ -38,24 +38,30 @@ async def menu(ctx: commands.Context, servery: str):
 				str_output += "***" + str(key) + "***" + " is closed! \n"
 				continue
 			for item in serv_dict[key]:
-				item = item.replace("amp","")
+				item = item.replace("amp;","")
 				str_output += "- " + item + "\n"
 
 	#case for Baker
-	elif servery == "Baker":
+	elif servery.__eq__("Baker"):
 		str_key = "Baker College Kitchen"
 		str_output += "***" + str_key + "*** \n"
-		for item in serv_dict[str_key]:
-			item = item.replace("amp","")
-			str_output += "- " + item + "\n"
+		if len(serv_dict[str_key]) == 0:
+			str_output = "***" + str_key + " is closed!***"
+		else:
+			for item in serv_dict[str_key]:
+				item = item.replace("amp;","")
+				str_output += "- " + item + "\n"
 	
 	#all other cases
 	else:
 		str_key = servery + " Servery"
 		str_output += "***" + str_key + "*** \n"
-		for item in serv_dict[str_key]:
-			item = item.replace("amp","")
-			str_output += "- " + item + "\n"
+		if len(serv_dict[str_key]) == 0:
+			str_output = "***" + str_key + "***" + " is closed! \n"
+		else:
+			for item in serv_dict[str_key]:
+				item = item.replace("amp;","")
+				str_output += "- " + item + "\n"
 
 	#sending the message
 	#await ctx.send(servery + " is having the following for " + meal_name)
