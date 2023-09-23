@@ -34,8 +34,8 @@ async def menu(ctx: commands.Context, servery: str):
 			str_output += " \n"
 			str_output += "***" + str(key) + "***" + " \n"
 			if len(serv_dict[key]) == 0:
-				str_output += " \n"
-				str_output += "***" + str(key) + "***" + " is closed! \n"
+				str_output += " is closed! \n"
+				# str_output += "***" + str(key) + "***" + " is closed! \n"
 				continue
 			for item in serv_dict[key]:
 				item = item.replace("amp;","")
