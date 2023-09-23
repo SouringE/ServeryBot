@@ -28,19 +28,25 @@ async def menu(ctx: commands.Context, servery: str):
 	#await ctx.send(servery)
 
 	#adding case for all serveries
-	if servery == "all":
+	if servery == "All":
 		str_output = ""
 		for key in serv_dict.keys():
 			str_output += " \n"
 			str_output += "***" + str(key) + "***" + " \n"
+			if len(serv_dict[key]) == 0:
+				str_output += " \n"
+				str_output += "***" + str(key) + "***" + " is closed! \n"
+				continue
 			for item in serv_dict[key]:
+				item = item.replace("amp","")
 				str_output += "- " + item + "\n"
 
 	#case for Baker
-	elif servery == "baker":
+	elif servery == "Baker":
 		str_key = "Baker College Kitchen"
 		str_output += "***" + str_key + "*** \n"
 		for item in serv_dict[str_key]:
+			item = item.replace("amp","")
 			str_output += "- " + item + "\n"
 	
 	#all other cases
@@ -48,6 +54,7 @@ async def menu(ctx: commands.Context, servery: str):
 		str_key = servery + " Servery"
 		str_output += "***" + str_key + "*** \n"
 		for item in serv_dict[str_key]:
+			item = item.replace("amp","")
 			str_output += "- " + item + "\n"
 
 	#sending the message
