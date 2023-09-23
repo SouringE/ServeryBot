@@ -21,3 +21,4 @@ async def timer(ctx: commands.Context, time: int):
 
 
 asyncio.run(main())
+#haha
