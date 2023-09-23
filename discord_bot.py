@@ -16,6 +16,7 @@ async def main():
 async def timer(ctx: commands.Context, time: int):
 	await asyncio.sleep(time)
 	await ctx.send("your time is up!")
+	await ctx.send("you're dead now")
 	
 
 
