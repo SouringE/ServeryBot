@@ -25,7 +25,7 @@ async def menu(ctx: commands.Context, servery: str):
 	serv_dict = get_menu()
 	str_output = ""
 	servery = str(servery.capitalize())
-	await ctx.send(servery)
+	#await ctx.send(servery)
 
 	#adding case for all serveries
 	if servery == "all":
@@ -39,14 +39,14 @@ async def menu(ctx: commands.Context, servery: str):
 	#case for Baker
 	elif servery == "baker":
 		str_key = "Baker College Kitchen"
-		str_output += "***" + str_key + "***"
+		str_output += "***" + str_key + "*** \n"
 		for item in serv_dict[str_key]:
 			str_output += "- " + item + "\n"
 	
 	#all other cases
 	else:
 		str_key = servery + " Servery"
-		str_output += "***" + str_key + "***"
+		str_output += "***" + str_key + "*** \n"
 		for item in serv_dict[str_key]:
 			str_output += "- " + item + "\n"
 
