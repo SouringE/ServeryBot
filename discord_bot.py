@@ -24,26 +24,33 @@ async def menu(ctx: commands.Context, servery: str):
 	#using imported function to get menu
 	serv_dict = get_menu()
 	str_output = ""
-
+	
 	#adding case for all serveries
 	if servery == "all":
 		str_output = ""
 		for key in serv_dict.keys():
+			if len(serv_dict[key]) == 0:
+				str_output += " \n"
+				str_output += "***" + str(key) + "***" + " is closed! \n"
+				continue
 			str_output += " \n"
 			str_output += "***" + str(key) + "***" + " \n"
 			for item in serv_dict[key]:
+				item = item.replace("amp","")
 				str_output += "- " + item + "\n"
 
 	#case for Baker
 	elif servery == "Baker":
 		str_key = "Baker College Kitchen"
 		for item in serv_dict[str_key]:
+			item = item.replace("amp","")
 			str_output += "- " + item + "\n"
 	
 	#all other cases
 	else:
 		str_key = servery + " Servery"
 		for item in serv_dict[str_key]:
+			item = item.replace("amp","")
 			str_output += "- " + item + "\n"
 
 	#sending the message
