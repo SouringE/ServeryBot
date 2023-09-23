@@ -25,7 +25,7 @@ async def menu(ctx: commands.Context, servery: str):
 	serv_dict = get_menu()
 	str_output = ""
 	if servery.islower():
-		servery = servery.capitalize
+		servery = str(servery.capitalize())
 		await ctx.send(servery)
 
 	#adding case for all serveries
