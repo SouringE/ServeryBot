@@ -30,10 +30,7 @@ async def menu(ctx: commands.Context, servery: str):
 		str_output = ""
 		for key in serv_dict.keys():
 			str_output += " \n"
-			if key == "Baker":
-				str_output += "***Baker College Kitchen*** \n"
-			else:
-				str_output += "***" + str(key) + "***" + " \n"
+			str_output += "***" + str(key) + "***" + " \n"
 			for item in serv_dict[key]:
 				str_output += "- " + item + "\n"
 
