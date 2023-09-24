@@ -1,6 +1,6 @@
 import requests
 import re
-import datetime
+from datetime import datetime
 from bs4 import BeautifulSoup
 
 # Allows me to get only the text (part between <> <>) of an HTML element from a string
@@ -12,11 +12,15 @@ def item_text(item):
 # Gets the menu data for only today's block in the HTML, since the HTML has menu data
 # for all days but only today's is visible
 def get_menu():
-    today = datetime.date.today()
-    weekday = today.weekday()
-    week_number = weekday + 1
+    now = datetime.now()
+    weekday = now.isoweekday()
     #print(week_number)
-    day_id = "block-views-block-day-menu-block-" + str(week_number) #archive uses 2 instead of str(week_number)
+    day_id = "block-views-block-day-menu-block-"
+    if (now.hour < 15):
+        dayid += str(weekday) #archive uses 2 instead of str(week_number)
+    else: #if now.hour > 14, < 24
+        dinner_day = weekday + 7
+        day_id += str(dinner_day)
 
     # Today's Rice dining website
     url = 'https://dining.rice.edu/'
