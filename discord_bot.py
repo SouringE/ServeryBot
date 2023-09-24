@@ -11,13 +11,13 @@ async def on_ready():
 	print(f'Bot {bot.user} is online! Id: {bot.user.id}')
 
 async def main():
-	await bot.start('MTE1NDk3MDY1MTUwMTc5MzMxMQ.GTjofL.BYGqgjc3gUGu4k6OHsmlTYX_Ny19GXB4CYGRJQ')
+	await bot.start('MTE1NDk3MDY1MTUwMTc5MzMxMQ.GuMILc.s5VxJ0FAcMGHPp9CD-FQ4kiZ7DP6oeFD0VC0JI')
 
 @bot.command()
 async def timer(ctx: commands.Context, time: int):
 	await asyncio.sleep(time)
 	await ctx.send("your time is up!")
-	await ctx.send("you're dead now")
+	await ctx.send("it has been " + str(time) + " second(s)")
 
 @bot.command()	
 async def menu(ctx: commands.Context, servery: str):
